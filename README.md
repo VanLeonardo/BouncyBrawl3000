@@ -24,7 +24,13 @@ Play as a sword-wielding knight, master melee combat, and take on three unique b
  - Shoebum
 	 - Slaps you and stomps on the ground
  >Note: AI was used only for certain parts of code. All assets are licensed or Human-made
-
+ >Outside Uses: Background for title Screen and UI - Kenney’s Game Assets
+Knight Sprite - by aamatniekss from itch.io
+Mage Sprite -  by LuizMelo from itch.io
+Shoebum Picture - donated by Shubham Dhall
+World Assets - by Trixie from itch.io
+Fireball - from NYKNCK from itch.io
+Star background - donated by KarthikClips
 
 
  
