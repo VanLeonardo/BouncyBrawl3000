@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="BouncyBrawl3000"
+run/main_scene="uid://db6ffao1eec4v"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
