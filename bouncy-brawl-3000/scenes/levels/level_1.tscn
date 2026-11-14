@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://6kvi7eib312d" path="res://Assets/Bg/Screenshot 2026-11-14 111304.png" id="1_hbghi"]
 [ext_resource type="Texture2D" uid="uid://8uxr8513ax8e" path="res://Assets/Bg/tileset.png" id="2_hn12h"]
+[ext_resource type="PackedScene" uid="uid://de7q6l4sfdtrk" path="res://scenes/entities/player.tscn" id="3_nsrm0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ihfcg"]
 texture = ExtResource("2_hn12h")
@@ -78,3 +79,6 @@ texture = ExtResource("1_hbghi")
 tile_set = SubResource("TileSet_wih8e")
 format = 2
 layer_0/tile_data = PackedInt32Array(1507374, 720896, 0, 1769510, 0, 9, 1835046, 0, 10, 1835052, 0, 10, 1769516, 0, 10, 1769502, 0, 9, 1769504, 0, 10, 1835038, 0, 10, 1835031, 0, 10, 1769493, 0, 10, 1835030, 0, 10, 1638422, 0, 5, 1900568, 0, 10, 1900577, 0, 10, 1900584, 0, 10, 1900587, 0, 10, 1769507, 0, 10, 1900567, 0, 10, 1900588, 0, 10, 2097207, 327680, 4, 2097211, 327680, 4, 2031626, 327680, 4, 2031621, 327680, 4)
+
+[node name="Node2D" parent="." unique_id=1439552503 instance=ExtResource("3_nsrm0")]
+position = Vector2(540, 144)
