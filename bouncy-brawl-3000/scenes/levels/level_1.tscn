@@ -50,7 +50,7 @@ texture = ExtResource("2_hn12h")
 10:8/0 = 0
 11:0/size_in_atlas = Vector2i(7, 10)
 11:0/0 = 0
-11:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-39.942272, -7.86508, 42.40975, -7.86508, 37.975548, -2.4588547, -38.4001, -3.2385635)
 10:10/0 = 0
 0:9/size_in_atlas = Vector2i(10, 1)
 0:9/0 = 0
@@ -62,7 +62,7 @@ texture = ExtResource("2_hn12h")
 0:5/0 = 0
 5:4/size_in_atlas = Vector2i(5, 1)
 5:4/0 = 0
-5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-70.76019, -6.830139, -74.03865, 7.376541, 12.840652, 6.8301315, 48.903763, 7.376541, 70.760185, 7.9229507, 77.923996, 1.4519958, 75.677895, -6.830139, 57.099922, -8.469368, -1.3660278, -8)
+5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_wih8e"]
 physics_layer_0/collision_layer = 1
@@ -71,7 +71,7 @@ sources/0 = SubResource("TileSetAtlasSource_ihfcg")
 [node name="Level1" type="Node2D" unique_id=2013580531]
 
 [node name="Screenshot20261114111304" type="Sprite2D" parent="." unique_id=1918730871]
-position = Vector2(577.2812, 324.98438)
+position = Vector2(580, 326)
 scale = Vector2(1.1766165, 1.2894834)
 texture = ExtResource("1_hbghi")
 
