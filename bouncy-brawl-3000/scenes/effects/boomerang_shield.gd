@@ -14,6 +14,7 @@ var _lifetime: float = 5.0
 var _has_hit_going: bool = false
 var _has_hit_returning: bool = false
 var _target_pos: Vector2 = Vector2.ZERO
+var _hit_cooldown_bodies: Dictionary = {}
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
@@ -42,6 +43,12 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 		return
 
+	# Update hit cooldowns
+	for b in _hit_cooldown_bodies.keys():
+		_hit_cooldown_bodies[b] -= delta
+		if _hit_cooldown_bodies[b] <= 0.0:
+			_hit_cooldown_bodies.erase(b)
+
 	# Rotate for visual effect
 	rotation += 10.0 * delta
 
@@ -68,6 +75,8 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 	if not body.has_method("receive_hit"):
 		return
+	if _hit_cooldown_bodies.has(body):
+		return
 
 	if _phase == 0 and _has_hit_going:
 		return
@@ -79,7 +88,12 @@ func _on_body_entered(body: Node2D) -> void:
 	else:
 		_has_hit_returning = true
 
-	var dir = Vector2(sign(body.global_position.x - global_position.x), -0.3).normalized()
+	_hit_cooldown_bodies[body] = 0.4
+
+	var dir_x = sign(body.global_position.x - global_position.x)
+	if dir_x == 0.0:
+		dir_x = 1.0
+	var dir = Vector2(dir_x, -0.3).normalized()
 	body.receive_hit(damage, knockback_add, dir, GameManager.combat_config)
 
 func _create_shield_visual() -> Node2D:

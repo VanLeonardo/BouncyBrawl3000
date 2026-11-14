@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://physfixsc01"]
+
+[ext_resource type="Script" path="res://tests/test_physics_query_fix.gd" id="1_test"]
+
+[node name="TestPhysicsQuery" type="Node"]
+script = ExtResource("1_test")

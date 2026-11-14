@@ -14,7 +14,7 @@ func _ready() -> void:
 	super._ready()
 	_preferred_distance = 80.0  # Wants to be close
 	if slap_collision:
-		slap_collision.disabled = true
+		slap_collision.set_deferred("disabled", true)
 	if slap_area:
 		slap_area.body_entered.connect(_on_slap_hit)
 
@@ -52,14 +52,14 @@ func _slap_attack() -> void:
 
 	# Enable slap hitbox
 	if slap_collision:
-		slap_collision.disabled = false
+		slap_collision.set_deferred("disabled", false)
 		slap_area.position.x = absf(slap_area.position.x) * (1.0 if _facing_right else -1.0)
 
 	_play_anim("attack")
 
 	await get_tree().create_timer(0.4).timeout
 	if slap_collision:
-		slap_collision.disabled = true
+		slap_collision.set_deferred("disabled", true)
 	_is_attacking = false
 	_slap_hit_list.clear()
 

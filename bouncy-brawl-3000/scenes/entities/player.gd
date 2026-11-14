@@ -28,7 +28,7 @@ const DROP_THROUGH_DURATION: float = 0.25
 func _ready() -> void:
 	combat_config = GameManager.combat_config
 	stats.reset()
-	attack_collision.disabled = true
+	attack_collision.set_deferred("disabled", true)
 
 	if knockback_label:
 		knockback_label.top_level = true
@@ -135,19 +135,19 @@ func _try_attack() -> void:
 	_attack_hit_list.clear()
 	_play_anim("attack")
 	# Active hitbox starts disabled; enabled during swing frames (1 & 2) via _on_sprite_frame_changed
-	attack_collision.disabled = true
+	attack_collision.set_deferred("disabled", true)
 
 func _on_sprite_frame_changed() -> void:
 	if _is_attacking and sprite.animation == "attack":
 		# Hitbox active only during swing window (frames 1 and 2)
 		var is_active_frame = sprite.frame in [1, 2]
-		attack_collision.disabled = not is_active_frame
-	else:
-		attack_collision.disabled = true
+		attack_collision.set_deferred("disabled", not is_active_frame)
+	elif not attack_collision.disabled:
+		attack_collision.set_deferred("disabled", true)
 
 func _on_sprite_animation_finished() -> void:
 	if sprite.animation == "attack":
-		attack_collision.disabled = true
+		attack_collision.set_deferred("disabled", true)
 		_is_attacking = false
 		_attack_hit_list.clear()
 
@@ -176,6 +176,12 @@ func receive_hit(damage: float, knockback_add: float, direction: Vector2, config
 	velocity = kb_force
 	_is_knocked_back = true
 	_knockback_velocity = kb_force
+
+	# Interrupt current attack if in progress
+	if _is_attacking:
+		_is_attacking = false
+		attack_collision.set_deferred("disabled", true)
+		_attack_hit_list.clear()
 
 	# Hit animation & flash
 	if not _is_dead:
@@ -235,7 +241,7 @@ func reset_fighter() -> void:
 	_is_knocked_back = false
 	_knockback_velocity = Vector2.ZERO
 	_attack_hit_list.clear()
-	attack_collision.disabled = true
+	attack_collision.set_deferred("disabled", true)
 	stats.reset()
 	sprite.modulate = Color.WHITE
 	_update_knockback_label()
