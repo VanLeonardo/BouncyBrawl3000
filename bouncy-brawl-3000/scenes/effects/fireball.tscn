@@ -1,6 +1,48 @@
 [gd_scene format=3 uid="uid://dke3p8y7ogxbn"]
 
 [ext_resource type="Script" path="res://scenes/effects/fireball.gd" id="1_fireball"]
+[ext_resource type="Texture2D" path="res://Assets/New Assets/Fire Ball Asset/FB00_nyknck/FB00_nyknck/FB001.png" id="2_fb1"]
+[ext_resource type="Texture2D" path="res://Assets/New Assets/Fire Ball Asset/FB00_nyknck/FB00_nyknck/FB002.png" id="3_fb2"]
+[ext_resource type="Texture2D" path="res://Assets/New Assets/Fire Ball Asset/FB00_nyknck/FB00_nyknck/FB003.png" id="4_fb3"]
+[ext_resource type="Texture2D" path="res://Assets/New Assets/Fire Ball Asset/FB00_nyknck/FB00_nyknck/FB004.png" id="5_fb4"]
+[ext_resource type="Texture2D" path="res://Assets/New Assets/Fire Ball Asset/FB00_nyknck/FB00_nyknck/FB005.png" id="6_fb5"]
+
+[sub_resource type="SpriteFrames" id="fireball_frames"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fb1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fb2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fb3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fb4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fb5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="fireball_collision"]
+radius = 10.0
 
 [node name="Fireball" type="Area2D"]
+collision_layer = 0
 script = ExtResource("1_fireball")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-12, 0)
+sprite_frames = SubResource("fireball_frames")
+autoplay = "default"
+frame_progress = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("fireball_collision")
