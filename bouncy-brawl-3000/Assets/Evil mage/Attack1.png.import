@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://4utu32aq6gen"
-path="res://.godot/imported/Attack1.png-7ce53a900817d0e0e75e8703f4a45d65.ctex"
+path="res://.godot/imported/Attack1.png-cfd2d65a738b339d0b79b3b04a2fb6ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Evil mage/Attack1.png"
-dest_files=["res://.godot/imported/Attack1.png-7ce53a900817d0e0e75e8703f4a45d65.ctex"]
+source_file="res://Assets/Evil mage/Attack1.png"
+dest_files=["res://.godot/imported/Attack1.png-cfd2d65a738b339d0b79b3b04a2fb6ea.ctex"]
 
 [params]
 

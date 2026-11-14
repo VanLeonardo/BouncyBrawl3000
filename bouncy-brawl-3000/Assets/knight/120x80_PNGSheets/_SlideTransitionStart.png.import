@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://57as475brki7"
-path="res://.godot/imported/_SlideTransitionStart.png-5b9efdd544178b174239890d739f9809.ctex"
+path="res://.godot/imported/_SlideTransitionStart.png-4d0297a827f7636e02148d4dde208c0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/knight/120x80_PNGSheets/_SlideTransitionStart.png"
-dest_files=["res://.godot/imported/_SlideTransitionStart.png-5b9efdd544178b174239890d739f9809.ctex"]
+source_file="res://Assets/knight/120x80_PNGSheets/_SlideTransitionStart.png"
+dest_files=["res://.godot/imported/_SlideTransitionStart.png-4d0297a827f7636e02148d4dde208c0d.ctex"]
 
 [params]
 

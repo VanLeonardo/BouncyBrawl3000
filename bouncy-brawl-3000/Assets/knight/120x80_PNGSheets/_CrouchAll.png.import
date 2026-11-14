@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bbyxbivagsgm3"
-path="res://.godot/imported/_CrouchAll.png-9ef813c0a00c95276eb8de40ce4559b4.ctex"
+path="res://.godot/imported/_CrouchAll.png-dc90f6fabdcb7e786cc0fe73f2817b60.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/knight/120x80_PNGSheets/_CrouchAll.png"
-dest_files=["res://.godot/imported/_CrouchAll.png-9ef813c0a00c95276eb8de40ce4559b4.ctex"]
+source_file="res://Assets/knight/120x80_PNGSheets/_CrouchAll.png"
+dest_files=["res://.godot/imported/_CrouchAll.png-dc90f6fabdcb7e786cc0fe73f2817b60.ctex"]
 
 [params]
 

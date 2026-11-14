@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://t35tlaqyc5tf"
-path="res://.godot/imported/Take hit.png-a353f695813f6392316205aa12a5de2a.ctex"
+path="res://.godot/imported/Take hit.png-4ec6190ab52d563da8d491836990f4d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Evil mage/Take hit.png"
-dest_files=["res://.godot/imported/Take hit.png-a353f695813f6392316205aa12a5de2a.ctex"]
+source_file="res://Assets/Evil mage/Take hit.png"
+dest_files=["res://.godot/imported/Take hit.png-4ec6190ab52d563da8d491836990f4d9.ctex"]
 
 [params]
 

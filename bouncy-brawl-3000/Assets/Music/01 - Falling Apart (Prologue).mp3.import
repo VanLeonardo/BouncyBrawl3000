@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://b4rmdyq1s0fhp"
-path="res://.godot/imported/01 - Falling Apart (Prologue).mp3-77bd85608a02901e66fc7b8daa8aaf42.mp3str"
+path="res://.godot/imported/01 - Falling Apart (Prologue).mp3-594b8955353fcb6002df80bafb1bd984.mp3str"
 
 [deps]
 
-source_file="res://assets/Music/01 - Falling Apart (Prologue).mp3"
-dest_files=["res://.godot/imported/01 - Falling Apart (Prologue).mp3-77bd85608a02901e66fc7b8daa8aaf42.mp3str"]
+source_file="res://Assets/Music/01 - Falling Apart (Prologue).mp3"
+dest_files=["res://.godot/imported/01 - Falling Apart (Prologue).mp3-594b8955353fcb6002df80bafb1bd984.mp3str"]
 
 [params]
 
