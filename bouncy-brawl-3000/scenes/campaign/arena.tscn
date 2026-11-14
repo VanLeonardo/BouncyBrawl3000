@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://c4arenascene1"]
+
+[ext_resource type="Script" path="res://scripts/campaign/arena_controller.gd" id="1_arena"]
+[ext_resource type="Texture2D" uid="uid://6kvi7eib312d" path="res://Assets/Bg/Screenshot 2026-11-14 111304.png" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://8uxr8513ax8e" path="res://Assets/Bg/tileset.png" id="3_tileset"]
+[ext_resource type="PackedScene" uid="uid://c4battlehud01" path="res://scenes/ui/battle_hud.tscn" id="4_hud"]
+[ext_resource type="PackedScene" uid="uid://c4pausemenu01" path="res://scenes/ui/pause_menu.tscn" id="5_pause"]
+[ext_resource type="PackedScene" uid="uid://c4fightresult1" path="res://scenes/ui/fight_result.tscn" id="6_result"]
+[ext_resource type="Script" path="res://scripts/combat/bounce_platform.gd" id="7_bounce"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ihfcg"]
+texture = ExtResource("3_tileset")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+9:7/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:0/size_in_atlas = Vector2i(7, 10)
+11:0/0 = 0
+10:10/0 = 0
+0:9/size_in_atlas = Vector2i(10, 1)
+0:9/0 = 0
+0:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-70.76019, -6.830139, -74.03865, 7.376541, 12.840652, 6.8301315, 48.903763, 7.376541, 70.760185, 7.9229507, 77.923996, 1.4519958, 75.677895, -6.830139, 57.099922, -8.469368, -1.3660278, -8)
+0:9/0/physics_layer_0/polygon_0/one_way = true
+0:9/0/physics_layer_0/polygon_0/one_way_margin = 4.0
+0:10/size_in_atlas = Vector2i(10, 1)
+0:10/0 = 0
+0:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-70.76019, -6.830139, -74.03865, 7.376541, 12.840652, 6.8301315, 48.903763, 7.376541, 70.760185, 7.9229507, 77.923996, 1.4519958, 75.677895, -6.830139, 57.099922, -8.469368, -1.3660278, -8)
+0:10/0/physics_layer_0/polygon_0/one_way = true
+0:10/0/physics_layer_0/polygon_0/one_way_margin = 4.0
+0:5/size_in_atlas = Vector2i(4, 4)
+0:5/0 = 0
+5:4/size_in_atlas = Vector2i(5, 1)
+5:4/0 = 0
+5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-70.76019, -6.830139, -74.03865, 7.376541, 12.840652, 6.8301315, 48.903763, 7.376541, 70.760185, 7.9229507, 77.923996, 1.4519958, 75.677895, -6.830139, 57.099922, -8.469368, -1.3660278, -8)
+5:4/0/physics_layer_0/polygon_0/one_way = true
+5:4/0/physics_layer_0/polygon_0/one_way_margin = 4.0
+
+[sub_resource type="TileSet" id="TileSet_wih8e"]
+physics_layer_0/collision_layer = 2
+sources/0 = SubResource("TileSetAtlasSource_ihfcg")
+
+[sub_resource type="RectangleShape2D" id="bounce_shape"]
+size = Vector2(160, 20)
+
+[node name="Arena" type="Node2D"]
+script = ExtResource("1_arena")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(577.2812, 324.98438)
+scale = Vector2(1.1766165, 1.2894834)
+texture = ExtResource("2_bg")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_wih8e")
+format = 2
+layer_0/tile_data = PackedInt32Array(1507374, 720896, 0, 1769510, 0, 9, 1835046, 0, 10, 1835052, 0, 10, 1769516, 0, 10, 1769502, 0, 9, 1769504, 0, 10, 1835038, 0, 10, 1835031, 0, 10, 1769493, 0, 10, 1835030, 0, 10, 1638422, 0, 5, 1900568, 0, 10, 1900577, 0, 10, 1900584, 0, 10, 1900587, 0, 10, 1769507, 0, 10, 1900567, 0, 10, 1900588, 0, 10, 2097207, 327680, 4, 2097211, 327680, 4, 2031626, 327680, 4, 2031621, 327680, 4)
+
+[node name="BouncePlatformLeft" type="Area2D" parent="."]
+position = Vector2(160, 496)
+collision_layer = 0
+collision_mask = 1
+script = ExtResource("7_bounce")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BouncePlatformLeft"]
+shape = SubResource("bounce_shape")
+
+[node name="BounceGlow" type="ColorRect" parent="BouncePlatformLeft"]
+offset_left = -80.0
+offset_top = -4.0
+offset_right = 80.0
+offset_bottom = 4.0
+color = Color(0.3, 0.7, 1.0, 0.4)
+
+[node name="BouncePlatformRight" type="Area2D" parent="."]
+position = Vector2(960, 512)
+collision_layer = 0
+collision_mask = 1
+script = ExtResource("7_bounce")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BouncePlatformRight"]
+shape = SubResource("bounce_shape")
+
+[node name="BounceGlow" type="ColorRect" parent="BouncePlatformRight"]
+offset_left = -80.0
+offset_top = -4.0
+offset_right = 80.0
+offset_bottom = 4.0
+color = Color(0.3, 0.7, 1.0, 0.4)
+
+[node name="BattleHUD" parent="." instance=ExtResource("4_hud")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_pause")]
+
+[node name="FightResult" parent="." instance=ExtResource("6_result")]

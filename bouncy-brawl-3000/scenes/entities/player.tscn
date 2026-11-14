@@ -1,22 +1,377 @@
 [gd_scene format=3 uid="uid://de7q6l4sfdtrk"]
 
-[ext_resource type="Script" uid="uid://r3y2dw1i2vyu" path="res://scenes/entities/player.gd" id="1_08t41"]
-[ext_resource type="Texture2D" uid="uid://bsra07drsr7yr" path="res://icon.svg" id="2_1ie0h"]
+[ext_resource type="Script" path="res://scenes/entities/player.gd" id="1_player"]
+[ext_resource type="Texture2D" path="res://Assets/knight/120x80_PNGSheets/_Idle.png" id="2_idle"]
+[ext_resource type="Texture2D" path="res://Assets/knight/120x80_PNGSheets/_Run.png" id="3_run"]
+[ext_resource type="Texture2D" path="res://Assets/knight/120x80_PNGSheets/_Attack.png" id="4_attack"]
+[ext_resource type="Texture2D" path="res://Assets/knight/120x80_PNGSheets/_Jump.png" id="5_jump"]
+[ext_resource type="Texture2D" path="res://Assets/knight/120x80_PNGSheets/_Fall.png" id="6_fall"]
+[ext_resource type="Texture2D" path="res://Assets/knight/120x80_PNGSheets/_Hit.png" id="7_hit"]
+[ext_resource type="Texture2D" path="res://Assets/knight/120x80_PNGSheets/_Death.png" id="8_death"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_58v82"]
-radius = 18.248287
+[sub_resource type="AtlasTexture" id="idle_0"]
+atlas = ExtResource("2_idle")
+region = Rect2(0, 0, 120, 80)
 
-[node name="Node2D" type="Node2D" unique_id=1439552503]
-position = Vector2(585, 68)
+[sub_resource type="AtlasTexture" id="idle_1"]
+atlas = ExtResource("2_idle")
+region = Rect2(120, 0, 120, 80)
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=316495421]
-script = ExtResource("1_08t41")
+[sub_resource type="AtlasTexture" id="idle_2"]
+atlas = ExtResource("2_idle")
+region = Rect2(240, 0, 120, 80)
 
-[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=893825004]
-position = Vector2(-41.5, -28.499998)
-scale = Vector2(0.3515625, 0.5546875)
-texture = ExtResource("2_1ie0h")
+[sub_resource type="AtlasTexture" id="idle_3"]
+atlas = ExtResource("2_idle")
+region = Rect2(360, 0, 120, 80)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1589306962]
-position = Vector2(-42, -14)
-shape = SubResource("CircleShape2D_58v82")
+[sub_resource type="AtlasTexture" id="idle_4"]
+atlas = ExtResource("2_idle")
+region = Rect2(480, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="idle_5"]
+atlas = ExtResource("2_idle")
+region = Rect2(600, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="idle_6"]
+atlas = ExtResource("2_idle")
+region = Rect2(720, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="idle_7"]
+atlas = ExtResource("2_idle")
+region = Rect2(840, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="idle_8"]
+atlas = ExtResource("2_idle")
+region = Rect2(960, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="idle_9"]
+atlas = ExtResource("2_idle")
+region = Rect2(1080, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="run_0"]
+atlas = ExtResource("3_run")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="run_1"]
+atlas = ExtResource("3_run")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="run_2"]
+atlas = ExtResource("3_run")
+region = Rect2(240, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="run_3"]
+atlas = ExtResource("3_run")
+region = Rect2(360, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="run_4"]
+atlas = ExtResource("3_run")
+region = Rect2(480, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="run_5"]
+atlas = ExtResource("3_run")
+region = Rect2(600, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="run_6"]
+atlas = ExtResource("3_run")
+region = Rect2(720, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="run_7"]
+atlas = ExtResource("3_run")
+region = Rect2(840, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="run_8"]
+atlas = ExtResource("3_run")
+region = Rect2(960, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="run_9"]
+atlas = ExtResource("3_run")
+region = Rect2(1080, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="attack_0"]
+atlas = ExtResource("4_attack")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="attack_1"]
+atlas = ExtResource("4_attack")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="attack_2"]
+atlas = ExtResource("4_attack")
+region = Rect2(240, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="attack_3"]
+atlas = ExtResource("4_attack")
+region = Rect2(360, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="jump_0"]
+atlas = ExtResource("5_jump")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="jump_1"]
+atlas = ExtResource("5_jump")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="jump_2"]
+atlas = ExtResource("5_jump")
+region = Rect2(240, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="fall_0"]
+atlas = ExtResource("6_fall")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="fall_1"]
+atlas = ExtResource("6_fall")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="fall_2"]
+atlas = ExtResource("6_fall")
+region = Rect2(240, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="hit_0"]
+atlas = ExtResource("7_hit")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="death_0"]
+atlas = ExtResource("8_death")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="death_1"]
+atlas = ExtResource("8_death")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="death_2"]
+atlas = ExtResource("8_death")
+region = Rect2(240, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="death_3"]
+atlas = ExtResource("8_death")
+region = Rect2(360, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="death_4"]
+atlas = ExtResource("8_death")
+region = Rect2(480, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="death_5"]
+atlas = ExtResource("8_death")
+region = Rect2(600, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="death_6"]
+atlas = ExtResource("8_death")
+region = Rect2(720, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="death_7"]
+atlas = ExtResource("8_death")
+region = Rect2(840, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="death_8"]
+atlas = ExtResource("8_death")
+region = Rect2(960, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="death_9"]
+atlas = ExtResource("8_death")
+region = Rect2(1080, 0, 120, 80)
+
+[sub_resource type="SpriteFrames" id="knight_frames"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("idle_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("idle_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("idle_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("idle_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("idle_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("idle_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("idle_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("idle_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("idle_8")
+}, {
+"duration": 1.0,
+"texture": SubResource("idle_9")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("run_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("run_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("run_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("run_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("run_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("run_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("run_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("run_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("run_8")
+}, {
+"duration": 1.0,
+"texture": SubResource("run_9")
+}],
+"loop": true,
+"name": &"run",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("attack_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("attack_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("attack_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("attack_3")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("jump_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("jump_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("jump_2")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("fall_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("fall_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("fall_2")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("hit_0")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("death_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("death_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("death_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("death_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("death_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("death_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("death_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("death_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("death_8")
+}, {
+"duration": 1.0,
+"texture": SubResource("death_9")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="player_collision"]
+size = Vector2(20, 40)
+
+[sub_resource type="RectangleShape2D" id="attack_shape"]
+size = Vector2(30, 30)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 1
+collision_mask = 3
+script = ExtResource("1_player")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -10)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("knight_frames")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15)
+shape = SubResource("player_collision")
+
+[node name="AttackArea" type="Area2D" parent="."]
+position = Vector2(30, -15)
+collision_layer = 0
+collision_mask = 1
+
+[node name="AttackCollision" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("attack_shape")
+disabled = true
+
+[node name="KnockbackLabel" type="Label" parent="."]
+offset_left = -30.0
+offset_top = -70.0
+offset_right = 30.0
+offset_bottom = -50.0
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(1, 1, 0.5, 1)
+theme_override_font_sizes/font_size = 14
+text = "0%"

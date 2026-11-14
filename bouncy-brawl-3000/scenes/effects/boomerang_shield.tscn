@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bxr3kshield01"]
+
+[ext_resource type="Script" path="res://scenes/effects/boomerang_shield.gd" id="1_shield"]
+
+[node name="BoomerangShield" type="Area2D"]
+script = ExtResource("1_shield")
