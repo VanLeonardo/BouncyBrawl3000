@@ -1,6 +1,81 @@
 [gd_scene format=3 uid="uid://c4titlescre01"]
 
 [ext_resource type="Script" path="res://scripts/ui/title_screen.gd" id="1_title"]
+[ext_resource type="Texture2D" path="res://Assets/Bg/background_0.png" id="2_bg0"]
+[ext_resource type="Texture2D" path="res://Assets/Bg/background_1.png" id="3_bg1"]
+[ext_resource type="Texture2D" path="res://Assets/New Assets/UI Assets/Ui for title screen/Default/Panel/panel-000.png" id="4_panel_solid"]
+[ext_resource type="Texture2D" path="res://Assets/New Assets/UI Assets/Ui for title screen/Default/Transparent center/panel-transparent-center-000.png" id="5_panel_trans"]
+[ext_resource type="Texture2D" path="res://Assets/knight/120x80_PNGSheets/_Idle.png" id="6_knight_idle"]
+[ext_resource type="Texture2D" path="res://Assets/New Assets/Cap Canda Assets/Captain Canada/CaptainCanada.png" id="7_canda_tex"]
+[ext_resource type="Texture2D" path="res://Assets/New Assets/Shoebum Asset/ShoeBum/shoebum.png" id="8_shoebum_tex"]
+
+[sub_resource type="AtlasTexture" id="knight_preview"]
+atlas = ExtResource("6_knight_idle")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="shoebum_preview"]
+atlas = ExtResource("8_shoebum_tex")
+region = Rect2(0, 0, 72, 128)
+
+[sub_resource type="StyleBoxTexture" id="play_btn_normal"]
+texture = ExtResource("4_panel_solid")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+modulate_color = Color(0.72, 0.45, 0.12, 1)
+
+[sub_resource type="StyleBoxTexture" id="play_btn_hover"]
+texture = ExtResource("4_panel_solid")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+modulate_color = Color(0.9, 0.6, 0.18, 1)
+
+[sub_resource type="StyleBoxTexture" id="play_btn_pressed"]
+texture = ExtResource("4_panel_solid")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+modulate_color = Color(0.5, 0.3, 0.08, 1)
+
+[sub_resource type="StyleBoxTexture" id="sec_btn_normal"]
+texture = ExtResource("4_panel_solid")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+modulate_color = Color(0.2, 0.25, 0.35, 1)
+
+[sub_resource type="StyleBoxTexture" id="sec_btn_hover"]
+texture = ExtResource("4_panel_solid")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+modulate_color = Color(0.3, 0.4, 0.55, 1)
+
+[sub_resource type="StyleBoxTexture" id="sec_btn_pressed"]
+texture = ExtResource("4_panel_solid")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+modulate_color = Color(0.12, 0.16, 0.24, 1)
+
+[sub_resource type="StyleBoxFlat" id="modal_bg"]
+bg_color = Color(0.08, 0.1, 0.15, 0.96)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.85, 0.65, 0.25, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -11,53 +86,332 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_title")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="BgSky" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.05, 0.05, 0.15, 1)
+texture = ExtResource("2_bg0")
+expand_mode = 1
+stretch_mode = 6
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="BgStars" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_bg1")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TitleBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 50.0
+offset_right = 300.0
+offset_bottom = 180.0
+grow_horizontal = 2
+theme_override_constants/separation = 4
+
+[node name="MainTitle" type="Label" parent="TitleBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 46
+text = "BOUNCY BRAWL"
+horizontal_alignment = 1
+
+[node name="SubTitle3000" type="Label" parent="TitleBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.35, 0.35, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 32
+text = "3000"
+horizontal_alignment = 1
+
+[node name="GenreTag" type="Label" parent="TitleBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.82, 0.95, 1)
+theme_override_font_sizes/font_size = 14
+text = "— 2D PLATFORM FIGHTING CAMPAIGN —"
+horizontal_alignment = 1
+
+[node name="KnightShowcase" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 220.0
+offset_right = 290.0
+offset_bottom = 470.0
+texture = ExtResource("5_panel_trans")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="KnightShowcase"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 14.0
+offset_right = -10.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Role" type="Label" parent="KnightShowcase/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.45, 1)
+theme_override_font_sizes/font_size = 14
+text = "HERO FIGHTER"
+horizontal_alignment = 1
+
+[node name="KnightSprite" type="TextureRect" parent="KnightShowcase/VBox"]
+texture_filter = 1
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = SubResource("knight_preview")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="KnightShowcase/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "The Knight"
+horizontal_alignment = 1
+
+[node name="Desc" type="Label" parent="KnightShowcase/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.7, 0.8, 1)
+theme_override_font_sizes/font_size = 12
+text = "Melee Swordmaster"
+horizontal_alignment = 1
+
+[node name="BossShowcase" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -290.0
+offset_top = 220.0
+offset_right = -100.0
+offset_bottom = 470.0
+grow_horizontal = 0
+texture = ExtResource("5_panel_trans")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="BossShowcase"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 14.0
+offset_right = -10.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Role" type="Label" parent="BossShowcase/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.45, 0.45, 1)
+theme_override_font_sizes/font_size = 14
+text = "THE 3 BOSSES"
+horizontal_alignment = 1
+
+[node name="BossSprites" type="HBoxContainer" parent="BossShowcase/VBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="CandaSprite" type="TextureRect" parent="BossShowcase/VBox/BossSprites"]
+texture_filter = 1
+custom_minimum_size = Vector2(48, 64)
+layout_mode = 2
+texture = ExtResource("7_canda_tex")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ShoebumSprite" type="TextureRect" parent="BossShowcase/VBox/BossSprites"]
+texture_filter = 1
+custom_minimum_size = Vector2(56, 64)
+layout_mode = 2
+texture = SubResource("shoebum_preview")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="BossShowcase/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 13
+text = "Mage • Canda • Shoebum"
+horizontal_alignment = 1
+
+[node name="Desc" type="Label" parent="BossShowcase/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.7, 0.8, 1)
+theme_override_font_sizes/font_size = 11
+text = "Sequential Arena Gauntlet"
+horizontal_alignment = 1
+
+[node name="MenuFrame" type="NinePatchRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -120.0
-offset_right = 150.0
-offset_bottom = 120.0
+offset_left = -160.0
+offset_top = -60.0
+offset_right = 160.0
+offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
+texture = ExtResource("5_panel_trans")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
 
-[node name="Title" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
-theme_override_font_sizes/font_size = 36
-text = "BOUNCY BRAWL
-3000"
-horizontal_alignment = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuFrame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
 
-[node name="Subtitle" type="Label" parent="VBoxContainer"]
+[node name="PlayButton" type="Button" parent="MenuFrame/VBoxContainer"]
+custom_minimum_size = Vector2(240, 48)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.7, 0.7, 0.9, 1)
+theme_override_colors/font_color = Color(1, 0.95, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.85, 0.6, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0.9, 1)
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("play_btn_normal")
+theme_override_styles/pressed = SubResource("play_btn_pressed")
+theme_override_styles/hover = SubResource("play_btn_hover")
+text = "PLAY CAMPAIGN"
+
+[node name="ControlsButton" type="Button" parent="MenuFrame/VBoxContainer"]
+custom_minimum_size = Vector2(240, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.92, 1, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("sec_btn_normal")
+theme_override_styles/pressed = SubResource("sec_btn_pressed")
+theme_override_styles/hover = SubResource("sec_btn_hover")
+text = "CONTROLS & RULES"
+
+[node name="QuitButton" type="Button" parent="MenuFrame/VBoxContainer"]
+custom_minimum_size = Vector2(240, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.8, 0.9, 1)
 theme_override_font_sizes/font_size = 14
-text = "A Platform Fighter"
+theme_override_styles/normal = SubResource("sec_btn_normal")
+theme_override_styles/pressed = SubResource("sec_btn_pressed")
+theme_override_styles/hover = SubResource("sec_btn_hover")
+text = "QUIT"
+
+[node name="FooterLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -350.0
+offset_top = -50.0
+offset_right = 350.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.5, 0.6, 0.75, 0.8)
+theme_override_font_sizes/font_size = 13
+text = "Arena Platform Fighter • 125 HP • Stamina Management • Knockback & Bounce"
 horizontal_alignment = 1
 
-[node name="PlayButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-custom_minimum_size = Vector2(200, 50)
-theme_override_font_sizes/font_size = 20
-text = "Play Campaign"
+[node name="ControlsModal" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.03, 0.06, 0.85)
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
+[node name="ModalFrame" type="PanelContainer" parent="ControlsModal"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -200.0
+offset_right = 280.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("modal_bg")
+
+[node name="VBox" type="VBoxContainer" parent="ControlsModal/ModalFrame"]
 layout_mode = 2
-custom_minimum_size = Vector2(200, 40)
-theme_override_font_sizes/font_size = 16
-text = "Quit"
+theme_override_constants/separation = 12
+
+[node name="ModalTitle" type="Label" parent="ControlsModal/ModalFrame/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.35, 1)
+theme_override_font_sizes/font_size = 22
+text = "HOW TO PLAY & CONTROLS"
+horizontal_alignment = 1
+
+[node name="ControlsText" type="Label" parent="ControlsModal/ModalFrame/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.93, 0.98, 1)
+theme_override_font_sizes/font_size = 14
+text = "• A / D or Left / Right: Move fighter & air control
+• Space: Jump (Double-tap in air for air jump)
+• S + Space: Drop through one-way platform
+• J: Melee Attack (deals 15 dmg, adds 8% knockback, costs 18 stamina)
+• Esc: Pause Game
+
+ARENA MECHANICS:
+• Knockback % increases after every hit taken!
+• Higher Knockback = farther launch distance!
+• Bounce Platforms below: Launch you back up into the arena!
+• Periodic Heal: Golden tick restores +15 HP every 30s!"
+
+[node name="CloseButton" type="Button" parent="ControlsModal/ModalFrame/VBox"]
+custom_minimum_size = Vector2(160, 38)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.95, 0.8, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("play_btn_normal")
+theme_override_styles/pressed = SubResource("play_btn_pressed")
+theme_override_styles/hover = SubResource("play_btn_hover")
+text = "CLOSE"

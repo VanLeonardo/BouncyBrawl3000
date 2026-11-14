@@ -1,6 +1,19 @@
 [gd_scene format=3 uid="uid://bxr3kshield01"]
 
 [ext_resource type="Script" path="res://scenes/effects/boomerang_shield.gd" id="1_shield"]
+[ext_resource type="Texture2D" path="res://Assets/New Assets/Cap Canda Assets/Captain Canada/Shield.png" id="2_shield_tex"]
+
+[sub_resource type="CircleShape2D" id="shield_collision"]
+radius = 12.0
 
 [node name="BoomerangShield" type="Area2D"]
+collision_layer = 0
 script = ExtResource("1_shield")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_shield_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("shield_collision")

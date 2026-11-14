@@ -1,192 +1,117 @@
 [gd_scene format=3 uid="uid://dkhq6wcltryto"]
 
 [ext_resource type="Script" path="res://scripts/enemies/captain_canda_ai.gd" id="1_canda"]
-[ext_resource type="Texture2D" path="res://Assets/captain_canda/idle.png" id="2_idle"]
-[ext_resource type="Texture2D" path="res://Assets/captain_canda/run.png" id="3_run"]
-[ext_resource type="Texture2D" path="res://Assets/captain_canda/attack.png" id="4_attack"]
-[ext_resource type="Texture2D" path="res://Assets/captain_canda/jump.png" id="5_jump"]
-[ext_resource type="Texture2D" path="res://Assets/captain_canda/fall.png" id="6_fall"]
-[ext_resource type="Texture2D" path="res://Assets/captain_canda/hit.png" id="7_hit"]
-[ext_resource type="Texture2D" path="res://Assets/captain_canda/death.png" id="8_death"]
-
-[sub_resource type="AtlasTexture" id="cc_idle_0"]
-atlas = ExtResource("2_idle")
-region = Rect2(0, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_idle_1"]
-atlas = ExtResource("2_idle")
-region = Rect2(120, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_idle_2"]
-atlas = ExtResource("2_idle")
-region = Rect2(240, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_idle_3"]
-atlas = ExtResource("2_idle")
-region = Rect2(360, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_idle_4"]
-atlas = ExtResource("2_idle")
-region = Rect2(480, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_idle_5"]
-atlas = ExtResource("2_idle")
-region = Rect2(600, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_idle_6"]
-atlas = ExtResource("2_idle")
-region = Rect2(720, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_idle_7"]
-atlas = ExtResource("2_idle")
-region = Rect2(840, 0, 120, 80)
+[ext_resource type="Texture2D" path="res://Assets/captain_canda/canda_idle.png" id="2_canda_idle"]
+[ext_resource type="Texture2D" path="res://Assets/captain_canda/canda_run_sheet.png" id="3_canda_run"]
+[ext_resource type="Texture2D" path="res://Assets/captain_canda/canda_throw_sheet.png" id="4_canda_throw"]
+[ext_resource type="Texture2D" path="res://Assets/captain_canda/canda_jump.png" id="5_canda_jump"]
+[ext_resource type="Texture2D" path="res://Assets/captain_canda/canda_fall.png" id="6_canda_fall"]
+[ext_resource type="Texture2D" path="res://Assets/captain_canda/canda_hit.png" id="7_canda_hit"]
 
 [sub_resource type="AtlasTexture" id="cc_run_0"]
-atlas = ExtResource("3_run")
-region = Rect2(0, 0, 120, 80)
+atlas = ExtResource("3_canda_run")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="cc_run_1"]
-atlas = ExtResource("3_run")
-region = Rect2(120, 0, 120, 80)
+atlas = ExtResource("3_canda_run")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="cc_run_2"]
-atlas = ExtResource("3_run")
-region = Rect2(240, 0, 120, 80)
+atlas = ExtResource("3_canda_run")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="cc_run_3"]
-atlas = ExtResource("3_run")
-region = Rect2(360, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_run_4"]
-atlas = ExtResource("3_run")
-region = Rect2(480, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_run_5"]
-atlas = ExtResource("3_run")
-region = Rect2(600, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_run_6"]
-atlas = ExtResource("3_run")
-region = Rect2(720, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_run_7"]
-atlas = ExtResource("3_run")
-region = Rect2(840, 0, 120, 80)
+atlas = ExtResource("3_canda_run")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="cc_atk_0"]
-atlas = ExtResource("4_attack")
-region = Rect2(0, 0, 120, 80)
+atlas = ExtResource("4_canda_throw")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="cc_atk_1"]
-atlas = ExtResource("4_attack")
-region = Rect2(120, 0, 120, 80)
+atlas = ExtResource("4_canda_throw")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="cc_atk_2"]
-atlas = ExtResource("4_attack")
-region = Rect2(240, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_atk_3"]
-atlas = ExtResource("4_attack")
-region = Rect2(360, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_atk_4"]
-atlas = ExtResource("4_attack")
-region = Rect2(480, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_atk_5"]
-atlas = ExtResource("4_attack")
-region = Rect2(600, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_jump_0"]
-atlas = ExtResource("5_jump")
-region = Rect2(0, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_jump_1"]
-atlas = ExtResource("5_jump")
-region = Rect2(120, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_jump_2"]
-atlas = ExtResource("5_jump")
-region = Rect2(240, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_fall_0"]
-atlas = ExtResource("6_fall")
-region = Rect2(0, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_fall_1"]
-atlas = ExtResource("6_fall")
-region = Rect2(120, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_fall_2"]
-atlas = ExtResource("6_fall")
-region = Rect2(240, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_hit_0"]
-atlas = ExtResource("7_hit")
-region = Rect2(0, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_hit_1"]
-atlas = ExtResource("7_hit")
-region = Rect2(120, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_death_0"]
-atlas = ExtResource("8_death")
-region = Rect2(0, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_death_1"]
-atlas = ExtResource("8_death")
-region = Rect2(120, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_death_2"]
-atlas = ExtResource("8_death")
-region = Rect2(240, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_death_3"]
-atlas = ExtResource("8_death")
-region = Rect2(360, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_death_4"]
-atlas = ExtResource("8_death")
-region = Rect2(480, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_death_5"]
-atlas = ExtResource("8_death")
-region = Rect2(600, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_death_6"]
-atlas = ExtResource("8_death")
-region = Rect2(720, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="cc_death_7"]
-atlas = ExtResource("8_death")
-region = Rect2(840, 0, 120, 80)
+atlas = ExtResource("4_canda_throw")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="canda_frames"]
 animations = [{
-"frames": [{"duration": 1.0, "texture": SubResource("cc_idle_0")}, {"duration": 1.0, "texture": SubResource("cc_idle_1")}, {"duration": 1.0, "texture": SubResource("cc_idle_2")}, {"duration": 1.0, "texture": SubResource("cc_idle_3")}, {"duration": 1.0, "texture": SubResource("cc_idle_4")}, {"duration": 1.0, "texture": SubResource("cc_idle_5")}, {"duration": 1.0, "texture": SubResource("cc_idle_6")}, {"duration": 1.0, "texture": SubResource("cc_idle_7")}],
-"loop": true, "name": &"idle", "speed": 8.0
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_canda_idle")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
 }, {
-"frames": [{"duration": 1.0, "texture": SubResource("cc_run_0")}, {"duration": 1.0, "texture": SubResource("cc_run_1")}, {"duration": 1.0, "texture": SubResource("cc_run_2")}, {"duration": 1.0, "texture": SubResource("cc_run_3")}, {"duration": 1.0, "texture": SubResource("cc_run_4")}, {"duration": 1.0, "texture": SubResource("cc_run_5")}, {"duration": 1.0, "texture": SubResource("cc_run_6")}, {"duration": 1.0, "texture": SubResource("cc_run_7")}],
-"loop": true, "name": &"run", "speed": 10.0
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("cc_run_0")
 }, {
-"frames": [{"duration": 1.0, "texture": SubResource("cc_atk_0")}, {"duration": 1.0, "texture": SubResource("cc_atk_1")}, {"duration": 1.0, "texture": SubResource("cc_atk_2")}, {"duration": 1.0, "texture": SubResource("cc_atk_3")}, {"duration": 1.0, "texture": SubResource("cc_atk_4")}, {"duration": 1.0, "texture": SubResource("cc_atk_5")}],
-"loop": false, "name": &"attack", "speed": 10.0
+"duration": 1.0,
+"texture": SubResource("cc_run_1")
 }, {
-"frames": [{"duration": 1.0, "texture": SubResource("cc_jump_0")}, {"duration": 1.0, "texture": SubResource("cc_jump_1")}, {"duration": 1.0, "texture": SubResource("cc_jump_2")}],
-"loop": false, "name": &"jump", "speed": 8.0
+"duration": 1.0,
+"texture": SubResource("cc_run_2")
 }, {
-"frames": [{"duration": 1.0, "texture": SubResource("cc_fall_0")}, {"duration": 1.0, "texture": SubResource("cc_fall_1")}, {"duration": 1.0, "texture": SubResource("cc_fall_2")}],
-"loop": true, "name": &"fall", "speed": 8.0
+"duration": 1.0,
+"texture": SubResource("cc_run_3")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
 }, {
-"frames": [{"duration": 1.0, "texture": SubResource("cc_hit_0")}, {"duration": 1.0, "texture": SubResource("cc_hit_1")}],
-"loop": false, "name": &"hit", "speed": 10.0
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("cc_atk_0")
 }, {
-"frames": [{"duration": 1.0, "texture": SubResource("cc_death_0")}, {"duration": 1.0, "texture": SubResource("cc_death_1")}, {"duration": 1.0, "texture": SubResource("cc_death_2")}, {"duration": 1.0, "texture": SubResource("cc_death_3")}, {"duration": 1.0, "texture": SubResource("cc_death_4")}, {"duration": 1.0, "texture": SubResource("cc_death_5")}, {"duration": 1.0, "texture": SubResource("cc_death_6")}, {"duration": 1.0, "texture": SubResource("cc_death_7")}],
-"loop": false, "name": &"death", "speed": 8.0
+"duration": 1.0,
+"texture": SubResource("cc_atk_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("cc_atk_2")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_canda_jump")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_canda_fall")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_canda_hit")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_canda_hit")
+}],
+"loop": false,
+"name": &"death",
+"speed": 6.0
 }]
 
 [sub_resource type="RectangleShape2D" id="canda_collision"]
-size = Vector2(22, 44)
+size = Vector2(24, 44)
 
 [node name="CaptainCanda" type="CharacterBody2D"]
 collision_layer = 1
@@ -195,22 +120,22 @@ script = ExtResource("1_canda")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -10)
+position = Vector2(0, -22)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("canda_frames")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2(0, -18)
+position = Vector2(0, -22)
 shape = SubResource("canda_collision")
 
 [node name="KnockbackLabel" type="Label" parent="."]
 offset_left = -30.0
-offset_top = -70.0
+offset_top = -65.0
 offset_right = 30.0
-offset_bottom = -50.0
-horizontal_alignment = 1
+offset_bottom = -45.0
 theme_override_colors/font_color = Color(1, 0.5, 0.5, 1)
 theme_override_font_sizes/font_size = 14
 text = "0%"
+horizontal_alignment = 1

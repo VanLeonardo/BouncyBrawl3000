@@ -1,93 +1,210 @@
 [gd_scene format=3 uid="uid://c4battlehud01"]
 
 [ext_resource type="Script" path="res://scripts/ui/battle_hud.gd" id="1_hud"]
+[ext_resource type="Texture2D" path="res://Assets/New Assets/UI Assets/Ui for title screen/Default/Transparent center/panel-transparent-center-000.png" id="2_panel_tex"]
+
+[sub_resource type="StyleBoxFlat" id="bar_bg"]
+bg_color = Color(0.08, 0.08, 0.12, 0.85)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.28, 0.3, 0.38, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="hp_fill"]
+bg_color = Color(0.88, 0.2, 0.22, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.45, 0.45, 0.8)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="stamina_bg"]
+bg_color = Color(0.06, 0.08, 0.1, 0.85)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.25, 0.3, 0.35, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="stamina_fill"]
+bg_color = Color(0.2, 0.75, 0.5, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.5, 0.95, 0.7, 0.8)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="heal_bg"]
+bg_color = Color(0.05, 0.2, 0.08, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.9, 0.4, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+expand_margin_left = 10.0
+expand_margin_top = 4.0
+expand_margin_right = 10.0
+expand_margin_bottom = 4.0
 
 [node name="BattleHUD" type="CanvasLayer"]
 script = ExtResource("1_hud")
 
+[node name="PlayerPanel" type="NinePatchRect" parent="."]
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 286.0
+offset_bottom = 132.0
+texture = ExtResource("2_panel_tex")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
 [node name="PlayerHUD" type="VBoxContainer" parent="."]
-anchors_preset = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 260.0
-offset_bottom = 120.0
+offset_left = 26.0
+offset_top = 18.0
+offset_right = 274.0
+offset_bottom = 122.0
+theme_override_constants/separation = 4
 
 [node name="PlayerName" type="Label" parent="PlayerHUD"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.85, 0.6, 1)
+theme_override_colors/font_color = Color(1, 0.88, 0.45, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
 theme_override_font_sizes/font_size = 18
 text = "Knight"
 
 [node name="HealthBar" type="ProgressBar" parent="PlayerHUD"]
+custom_minimum_size = Vector2(240, 20)
 layout_mode = 2
-custom_minimum_size = Vector2(220, 20)
+theme_override_styles/background = SubResource("bar_bg")
+theme_override_styles/fill = SubResource("hp_fill")
 max_value = 125.0
 value = 125.0
 show_percentage = false
-theme_override_styles/fill = null
 
 [node name="HealthValue" type="Label" parent="PlayerHUD"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.8, 1, 0.8, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.9, 0.95, 0.9, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 13
 text = "125 / 125"
 
 [node name="StaminaBar" type="ProgressBar" parent="PlayerHUD"]
+custom_minimum_size = Vector2(240, 12)
 layout_mode = 2
-custom_minimum_size = Vector2(220, 12)
+theme_override_styles/background = SubResource("stamina_bg")
+theme_override_styles/fill = SubResource("stamina_fill")
 max_value = 100.0
 value = 100.0
 show_percentage = false
+
+[node name="EnemyPanel" type="NinePatchRect" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -286.0
+offset_top = 10.0
+offset_right = -14.0
+offset_bottom = 132.0
+grow_horizontal = 0
+texture = ExtResource("2_panel_tex")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
 
 [node name="EnemyHUD" type="VBoxContainer" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -260.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 120.0
+offset_left = -274.0
+offset_top = 18.0
+offset_right = -26.0
+offset_bottom = 122.0
+grow_horizontal = 0
+theme_override_constants/separation = 4
 
 [node name="EnemyName" type="Label" parent="EnemyHUD"]
 layout_mode = 2
-horizontal_alignment = 2
-theme_override_colors/font_color = Color(1, 0.6, 0.6, 1)
+theme_override_colors/font_color = Color(1, 0.45, 0.45, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
 theme_override_font_sizes/font_size = 18
 text = "Enemy"
+horizontal_alignment = 2
 
 [node name="HealthBar" type="ProgressBar" parent="EnemyHUD"]
+custom_minimum_size = Vector2(240, 20)
 layout_mode = 2
-custom_minimum_size = Vector2(220, 20)
+theme_override_styles/background = SubResource("bar_bg")
+theme_override_styles/fill = SubResource("hp_fill")
 max_value = 125.0
 value = 125.0
-show_percentage = false
 fill_mode = 1
+show_percentage = false
 
 [node name="HealthValue" type="Label" parent="EnemyHUD"]
 layout_mode = 2
-horizontal_alignment = 2
-theme_override_colors/font_color = Color(1, 0.8, 0.8, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.95, 0.9, 0.9, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 13
 text = "125 / 125"
+horizontal_alignment = 2
 
 [node name="StaminaBar" type="ProgressBar" parent="EnemyHUD"]
+custom_minimum_size = Vector2(240, 12)
 layout_mode = 2
-custom_minimum_size = Vector2(220, 12)
+theme_override_styles/background = SubResource("stamina_bg")
+theme_override_styles/fill = SubResource("stamina_fill")
 max_value = 100.0
 value = 100.0
-show_percentage = false
 fill_mode = 1
+show_percentage = false
 
 [node name="HealIndicator" type="Label" parent="."]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -80.0
-offset_top = 8.0
-offset_right = 80.0
-offset_bottom = 32.0
-horizontal_alignment = 1
-theme_override_colors/font_color = Color(0.4, 1, 0.4, 1)
-theme_override_font_sizes/font_size = 16
+offset_left = -90.0
+offset_top = 14.0
+offset_right = 90.0
+offset_bottom = 38.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.4, 1, 0.5, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("heal_bg")
 text = "♥ HEAL +15 HP ♥"
-visible = false
+horizontal_alignment = 1
