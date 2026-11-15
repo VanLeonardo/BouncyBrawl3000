@@ -2,9 +2,11 @@
 
 Hello! This is **Bouncy Brawl 3000**! A 2D Platform fighting game with Bouncy Knockback Mechanics.
 Play as a sword-wielding knight, master melee combat, and take on three unique bosses: the fireball-slinging Mage, shield-wielding Captain Canada, and the GOAT Shoebum.
+The Game was made for Hack Club Haven Game Jam
 # Tools
 - Godot: Game Engine
 - Antigravity: AI code help
+- Piskel: Assets
 
 ## Features
 
