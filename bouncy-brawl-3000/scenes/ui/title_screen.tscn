@@ -362,9 +362,6 @@ theme_override_font_sizes/font_size = 20
 text = "HOW TO PLAY & CONTROLS"
 horizontal_alignment = 1
 
-<<<<<<< Updated upstream
-[node name="ControlsText" type="Label" parent="ControlsModal/ModalFrame/VBox" unique_id=457735684]
-=======
 [node name="DeviceBadge" type="Label" parent="ControlsModal/ModalFrame/VBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
@@ -372,8 +369,7 @@ theme_override_font_sizes/font_size = 13
 text = "⌨ ACTIVE INPUT: KEYBOARD"
 horizontal_alignment = 1
 
-[node name="ControlsText" type="Label" parent="ControlsModal/ModalFrame/VBox"]
->>>>>>> Stashed changes
+[node name="ControlsText" type="Label" parent="ControlsModal/ModalFrame/VBox" unique_id=457735684]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.93, 0.98, 1)
 theme_override_font_sizes/font_size = 13
