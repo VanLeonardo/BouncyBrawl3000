@@ -1,8 +1,12 @@
 extends CharacterBody2D
 ## Player knight controller: movement, jumping, attacking, knockback, platform drop-through.
+## Supports keyboard and gamepad controller input for the single-player campaign.
 
 signal attacked(attack_area: Area2D)
 signal died()
+
+@export var player_id: int = 1
+var input_prefix: String = "p1_"
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var collision_shape: CollisionShape2D = $CollisionShape
@@ -26,6 +30,7 @@ var _drop_through_timer: float = 0.0
 const DROP_THROUGH_DURATION: float = 0.25
 
 func _ready() -> void:
+	input_prefix = "p%d_" % player_id
 	combat_config = GameManager.combat_config
 	stats.reset()
 	attack_collision.set_deferred("disabled", true)
@@ -68,39 +73,39 @@ func _physics_process(delta: float) -> void:
 			_is_knocked_back = false
 			_knockback_velocity = Vector2.ZERO
 
-	# Knockback override
+	# Horizontal movement input (Keyboard & Controller analog stick / D-Pad)
+	var move_input = Input.get_axis(input_prefix + "left", input_prefix + "right")
+
+	# Knockback or Normal Movement
 	if _is_knocked_back:
 		velocity.x = lerpf(velocity.x, 0.0, 2.0 * delta)
 		# Air control during knockback
-		var input_dir = Input.get_axis("p1_left", "p1_right")
-		velocity.x += input_dir * combat_config.move_speed * combat_config.air_control * delta * 60.0
+		velocity.x += move_input * combat_config.move_speed * combat_config.air_control * delta * 60.0
 	elif not _is_attacking:
-		# Normal movement
 		if is_on_floor():
-			var input_dir = Input.get_axis("p1_left", "p1_right")
-			velocity.x = input_dir * combat_config.move_speed
+			velocity.x = move_input * combat_config.move_speed
 
 			# Jump or Drop through
-			if Input.is_action_just_pressed("p1_jump"):
-				if Input.is_action_pressed("p1_down"):
+			if Input.is_action_just_pressed(input_prefix + "jump"):
+				if Input.is_action_pressed(input_prefix + "down"):
 					_start_drop_through()
 				else:
 					velocity.y = combat_config.jump_force
 					_play_anim("jump")
+			elif Input.is_action_just_pressed(input_prefix + "down") and _is_on_one_way_platform():
+				_start_drop_through()
 		else:
 			# Air control while jumping/falling
-			var input_dir = Input.get_axis("p1_left", "p1_right")
-			velocity.x += input_dir * combat_config.move_speed * combat_config.air_control * delta * 60.0
+			velocity.x += move_input * combat_config.move_speed * combat_config.air_control * delta * 60.0
 			velocity.x = clampf(velocity.x, -combat_config.move_speed, combat_config.move_speed)
 
 	# Attack (melee only, stamina gated)
-	if Input.is_action_just_pressed("p1_attack") and not _is_attacking:
+	if Input.is_action_just_pressed(input_prefix + "attack") and not _is_attacking:
 		_try_attack()
 
-	# Facing direction
-	var input_dir = Input.get_axis("p1_left", "p1_right")
-	if input_dir != 0.0 and not _is_attacking:
-		_facing_right = input_dir > 0.0
+	# Facing direction (analog stick, D-Pad, or keyboard)
+	if absf(move_input) > 0.05 and not _is_attacking:
+		_facing_right = move_input > 0.0
 		sprite.flip_h = not _facing_right
 		attack_area.position.x = absf(attack_area.position.x) * (1.0 if _facing_right else -1.0)
 
@@ -127,6 +132,15 @@ func _physics_process(delta: float) -> void:
 	if knockback_label:
 		knockback_label.global_position = global_position + Vector2(-30, -65)
 
+func _is_on_one_way_platform() -> bool:
+	for i in range(get_slide_collision_count()):
+		var col = get_slide_collision(i)
+		var collider = col.get_collider()
+		if collider is CollisionObject2D:
+			if collider.get_collision_layer_value(2) and not collider.get_collision_layer_value(1):
+				return true
+	return false
+
 func _try_attack() -> void:
 	if not stats.has_stamina(combat_config.knight_attack_stamina):
 		return
@@ -134,22 +148,30 @@ func _try_attack() -> void:
 	_is_attacking = true
 	_attack_hit_list.clear()
 	_play_anim("attack")
-	# Active hitbox starts disabled; enabled during swing frames (1 & 2) via _on_sprite_frame_changed
+	# Active hitbox starts disabled; enabled during active swing frames (1 & 2) via _on_sprite_frame_changed
 	attack_collision.set_deferred("disabled", true)
+	attacked.emit(attack_area)
 
 func _on_sprite_frame_changed() -> void:
-	if _is_attacking and sprite.animation == "attack":
-		# Hitbox active only during swing window (frames 1 and 2)
-		var is_active_frame = sprite.frame in [1, 2]
-		attack_collision.set_deferred("disabled", not is_active_frame)
-	elif not attack_collision.disabled:
-		attack_collision.set_deferred("disabled", true)
+	if not _is_attacking or sprite.animation != "attack":
+		if not attack_collision.disabled:
+			attack_collision.set_deferred("disabled", true)
+		return
+
+	# Frames 1 and 2 are the active swing window
+	var is_active_frame = (sprite.frame == 1 or sprite.frame == 2)
+	attack_collision.set_deferred("disabled", not is_active_frame)
 
 func _on_sprite_animation_finished() -> void:
 	if sprite.animation == "attack":
-		attack_collision.set_deferred("disabled", true)
 		_is_attacking = false
+		attack_collision.set_deferred("disabled", true)
 		_attack_hit_list.clear()
+	elif sprite.animation == "hit":
+		if not _is_dead:
+			_play_anim("idle")
+	elif sprite.animation == "death":
+		pass
 
 func _on_attack_hit_body(body: Node2D) -> void:
 	if not _is_attacking:
@@ -160,22 +182,24 @@ func _on_attack_hit_body(body: Node2D) -> void:
 		return
 	if not body.has_method("receive_hit"):
 		return
+
 	_attack_hit_list.append(body)
 
-	var direction = Vector2(1 if body.global_position.x > global_position.x else -1, -0.3).normalized()
-	body.receive_hit(combat_config.knight_attack_damage, combat_config.knight_knockback_add, direction, combat_config)
+	var hit_dir = Vector2(1.0 if _facing_right else -1.0, -0.3).normalized()
+	body.receive_hit(combat_config.knight_attack_damage, combat_config.knight_knockback_add, hit_dir, combat_config)
 
-func receive_hit(damage: float, knockback_add: float, direction: Vector2, config: CombatConfig) -> void:
+func receive_hit(dmg: float, kb_add: float, direction: Vector2, cfg: CombatConfig) -> void:
 	if _is_dead:
 		return
-	stats.take_damage(damage)
-	stats.add_knockback(knockback_add)
 
-	# Apply knockback force
-	var kb_force = config.get_knockback_force(stats.knockback_percent, direction)
-	velocity = kb_force
-	_is_knocked_back = true
+	stats.take_damage(dmg)
+	stats.add_knockback(kb_add)
+
+	# Calculate knockback velocity
+	var kb_force = cfg.get_knockback_force(stats.knockback_percent, direction)
 	_knockback_velocity = kb_force
+	velocity = _knockback_velocity
+	_is_knocked_back = true
 
 	# Interrupt current attack if in progress
 	if _is_attacking:
@@ -220,7 +244,7 @@ func _on_heal_tick() -> void:
 	if not _is_dead:
 		stats.heal(combat_config.heal_amount)
 
-func _on_knockback_changed(percent: float) -> void:
+func _on_knockback_changed(_percent: float) -> void:
 	_update_knockback_label()
 
 func _update_knockback_label() -> void:

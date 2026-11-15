@@ -1,5 +1,5 @@
 extends CanvasLayer
-## Victory/Defeat overlay with retry and continue options.
+## Victory/Defeat overlay with retry and continue options, supporting gamepad navigation.
 
 @onready var title_label: Label = $Panel/VBoxContainer/TitleLabel
 @onready var message_label: Label = $Panel/VBoxContainer/MessageLabel
@@ -17,6 +17,12 @@ func _ready() -> void:
 	retry_button.pressed.connect(_on_retry)
 	title_button.pressed.connect(_on_title)
 
+func _unhandled_input(event: InputEvent) -> void:
+	if not visible:
+		return
+	if event.is_action_pressed("ui_cancel"):
+		_on_title()
+
 func show_victory() -> void:
 	visible = true
 	get_tree().paused = true
@@ -32,6 +38,7 @@ func show_victory() -> void:
 		continue_button.text = "Campaign Complete!"
 
 	retry_button.visible = false
+	continue_button.grab_focus()
 
 func show_defeat() -> void:
 	visible = true
@@ -41,6 +48,7 @@ func show_defeat() -> void:
 	message_label.text = "You were defeated by " + GameManager.get_boss_name() + "..."
 	continue_button.visible = false
 	retry_button.visible = true
+	retry_button.grab_focus()
 
 func show_campaign_complete() -> void:
 	visible = true
@@ -50,6 +58,7 @@ func show_campaign_complete() -> void:
 	message_label.text = "You defeated all three bosses!\nYou are the Bouncy Brawl Champion!"
 	continue_button.visible = false
 	retry_button.visible = false
+	title_button.grab_focus()
 
 func _on_continue() -> void:
 	visible = false
