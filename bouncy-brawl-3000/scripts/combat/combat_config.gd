@@ -85,3 +85,6 @@ extends Resource
 func get_knockback_force(knockback_percent: float, direction: Vector2) -> Vector2:
 	var force_magnitude = knockback_base_force + knockback_scaling * knockback_percent
 	return direction.normalized() * force_magnitude
+
+func calculate_knockback(knockback_percent: float) -> float:
+	return knockback_base_force + knockback_scaling * knockback_percent

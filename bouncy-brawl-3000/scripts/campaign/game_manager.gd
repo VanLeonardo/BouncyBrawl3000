@@ -1,11 +1,14 @@
 extends Node
-## Autoload singleton managing the campaign state, healing timer, and fight transitions.
+## Autoload singleton managing the campaign state, healing timer, fight transitions,
+## and input controller manager.
 
 signal fight_started(fight_index: int)
 signal fight_ended(player_won: bool)
 signal heal_tick()
 
 enum FightState { NONE, FIGHTING, PAUSED, VICTORY, DEFEAT }
+
+const INPUT_MANAGER_SCRIPT = preload("res://scripts/combat/input_manager.gd")
 
 var combat_config: CombatConfig = CombatConfig.new()
 var current_fight: int = 0  # 0=Mage, 1=Canda, 2=Shoebum
@@ -16,11 +19,15 @@ var _fight_active: bool = false
 
 var player_stats: FighterStats = null
 var enemy_stats: FighterStats = null
+var input_manager: Node = null
 
 const BOSS_NAMES: Array[String] = ["Mage", "Captain Canda", "Shoebum"]
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	input_manager = INPUT_MANAGER_SCRIPT.new()
+	input_manager.name = "InputManager"
+	add_child(input_manager)
 
 func _process(delta: float) -> void:
 	if fight_state != FightState.FIGHTING:
